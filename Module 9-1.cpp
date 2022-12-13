@@ -38,7 +38,7 @@ int main() {
             std::cin >> departureTime;
         }
         else {
-            incorrectFormat = true;
+            incorrectFormat = false;
         }
 
         departureHours = 10 * (departureTime[0] - '0') + (departureTime[1] - '0');
@@ -49,11 +49,41 @@ int main() {
             std::cin >> departureTime;
         }
         else {
-            incorrectTime = true;
+            incorrectTime = false;
         }
-
     } while (incorrectTime || incorrectFormat);
 
-    std::cout << "time : " << departureHours << departureMinutes;
+    std::string arrivalTime;
+    std::cout << "Input the arrival time in the format (HH:MM): ";
+    std::cin >> arrivalTime;
+
+    incorrectTime = true, incorrectFormat = true;
+    int arrivalHours = 0, arrivalMinutes = 0;
+
+    do
+    {
+        if (arrivalTime.length() != 5 || arrivalTime[2] != ':') {
+            std::cout << "Incorrect time format, input again: ";
+            std::cin >> arrivalTime;
+        }
+        else {
+            incorrectFormat = false;
+        }
+
+        arrivalHours = 10 * (arrivalTime[0] - '0') + (arrivalTime[1] - '0');
+        arrivalMinutes = 10 * (arrivalTime[3] - '0') + (arrivalTime[4] - '0');
+
+        if (arrivalHours > 24 || arrivalMinutes > 59) {
+            std::cout << "Incorrect time, input again: ";
+            std::cin >> arrivalTime;
+        }
+        else {
+            incorrectTime = false;
+        }
+    } while (incorrectTime || incorrectFormat);
+
+
+
+
 
 }
