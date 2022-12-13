@@ -95,6 +95,7 @@ int main() {
         travelMinutes = arrivalMinutes - departureMinutes;
     }
 
+    std::cout << "The travel time was " << travelHour << " h. " << travelMinutes << " min." << std::endl;
 
 
 
