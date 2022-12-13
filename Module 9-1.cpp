@@ -91,12 +91,9 @@ int main() {
         travelMinutes = (minutesPerDay + (arrivalHours - departureHours) * 60 + (arrivalMinutes - departureMinutes)) % 60;
     }
     else {
-        travelHour = arrivalHours - departureHours;
-        travelMinutes = arrivalMinutes - departureMinutes;
+        travelHour = ((arrivalHours - departureHours) * 60 + (arrivalMinutes - departureMinutes)) / 60;
+        travelMinutes = ((arrivalHours - departureHours) * 60 + (arrivalMinutes - departureMinutes)) % 60;
     }
 
     std::cout << "The travel time was " << travelHour << " h. " << travelMinutes << " min." << std::endl;
-
-
-
 }
