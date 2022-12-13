@@ -24,6 +24,8 @@
 
 int main() {
 
+    int minutesPerDay = 1440;
+
     std::string departureTime;
     std::cout << "Input the departure time in the format (HH:MM): ";
     std::cin >> departureTime;
@@ -82,6 +84,16 @@ int main() {
         }
     } while (incorrectTime || incorrectFormat);
 
+    int travelHour = 0, travelMinutes = 0;
+
+    if ((arrivalHours < departureHours) || (arrivalHours == departureHours && arrivalMinutes < departureMinutes)) {
+        travelHour = (minutesPerDay + (arrivalHours - departureHours) * 60 + (arrivalMinutes - departureMinutes)) / 60;
+        travelMinutes = (minutesPerDay + (arrivalHours - departureHours) * 60 + (arrivalMinutes - departureMinutes)) % 60;
+    }
+    else {
+        travelHour = arrivalHours - departureHours;
+        travelMinutes = arrivalMinutes - departureMinutes;
+    }
 
 
 
